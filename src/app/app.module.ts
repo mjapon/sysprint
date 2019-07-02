@@ -6,17 +6,23 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MenuComponent } from './components/shared/menu/menu.component';
+import {PanelMenuModule} from 'primeng/panelmenu';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    PanelMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
