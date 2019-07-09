@@ -9,6 +9,14 @@ import { HomeComponent } from './components/home/home.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MenuComponent } from './components/shared/menu/menu.component';
 import {PanelMenuModule} from 'primeng/panelmenu';
+import {ContribuyenteService} from './services/contribuyente.service';
+import { ContribsListComponent } from './components/contribs/contribs-list/contribs-list.component';
+import {HttpClientModule} from '@angular/common/http';
+import {TableModule} from 'primeng/table';
+import {MenubarModule} from 'primeng/menubar';
+import {SplitButtonModule, ToolbarModule} from 'primeng/primeng';
+import { ContribsFormComponent } from './components/contribs/contribs-form/contribs-form.component';
+import { PageHeaderComponent } from './components/shared/page-header/page-header.component';
 
 @NgModule({
   declarations: [
@@ -16,15 +24,23 @@ import {PanelMenuModule} from 'primeng/panelmenu';
     NavbarComponent,
     LoginComponent,
     HomeComponent,
-    MenuComponent
+    MenuComponent,
+    ContribsListComponent,
+    ContribsFormComponent,
+    PageHeaderComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    PanelMenuModule
+    HttpClientModule,
+    PanelMenuModule,
+    TableModule,
+    MenubarModule,
+    ToolbarModule,
+    SplitButtonModule
   ],
-  providers: [],
+  providers: [ContribuyenteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
