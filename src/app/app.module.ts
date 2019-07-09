@@ -14,9 +14,11 @@ import { ContribsListComponent } from './components/contribs/contribs-list/contr
 import {HttpClientModule} from '@angular/common/http';
 import {TableModule} from 'primeng/table';
 import {MenubarModule} from 'primeng/menubar';
-import {SplitButtonModule, ToolbarModule} from 'primeng/primeng';
+import {CheckboxModule, InputMaskModule, MessageModule, SplitButtonModule, ToolbarModule} from 'primeng/primeng';
 import { ContribsFormComponent } from './components/contribs/contribs-form/contribs-form.component';
 import { PageHeaderComponent } from './components/shared/page-header/page-header.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,11 +36,16 @@ import { PageHeaderComponent } from './components/shared/page-header/page-header
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
     PanelMenuModule,
     TableModule,
     MenubarModule,
     ToolbarModule,
-    SplitButtonModule
+    SplitButtonModule,
+    InputMaskModule,
+    MessageModule,
+    CheckboxModule
   ],
   providers: [ContribuyenteService],
   bootstrap: [AppComponent]

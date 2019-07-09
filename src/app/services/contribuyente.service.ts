@@ -1,55 +1,69 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
-import {Observable, throwError} from 'rxjs';
-import swal from 'sweetalert2';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
-import {ContribsResp} from '../model/contribs';
+import {ContribFormResponse, ContribListResponse, DefaultRestResponse} from '../model/contribs';
+import {BaseService} from './base-service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ContribuyenteService {
-
-  private urlEndPoint = 'http://localhost:6543/rest/contribuyente';
+export class ContribuyenteService extends BaseService {
 
   constructor(private http: HttpClient) {
-
+    super('/contribuyente');
   }
 
-  findByNui(nui: string): Observable<ContribsResp> {
-
-    const endpoint = this.urlEndPoint + '/0';
-    const params = new HttpParams()
-      .set('nui', nui);
-
+  findByRuc(ruc: string): Observable<any> {
+    const endpoint = this.urlEndPoint;
+    const httpOptions = this.getHttpOptions({accion: 'find', ruc: ruc});
     return this.http
-      .get(endpoint, {'params': params})
-      .pipe(map((response: any) => response.sedipres as ContribsResp),
-        catchError(this.fnProcesaError)
-      );
-  }
-
-  listar(): Observable<ContribsResp> {
-
-    return this.http
-      .get(this.urlEndPoint)
-      .pipe(map((response: any) => {
-          console.log('Respuesta del servidor:');
+      .get(endpoint, httpOptions)
+      .pipe(
+        map((response: any) => {
+          console.log('Response que llega es:');
           console.log(response);
-          return response as ContribsResp;
+          return response;
         }),
         catchError(this.fnProcesaError)
       );
   }
 
-  fnProcesaError(e) {
-    if (e.status === 400) {
-      return throwError(e);
-    }
-    if (e.error.mensaje) {
-      swal.fire('Error al procesar petición', e.error.mensaje, 'error');
-    }
-    return throwError(e);
+  findByCod(cntId: number): Observable<ContribFormResponse> {
+    const endpoint = this.buildUrlEndPoint('/' + cntId);
+    const httpOptions = this.getHttpOptions({accion: 'form'});
+
+    return this.http
+      .get(endpoint, httpOptions)
+      .pipe(map((response: any) => {
+          console.log('response in service:');
+          console.log(response);
+          return response as ContribFormResponse;
+        }),
+        catchError(this.fnProcesaError)
+      );
+  }
+
+  listar(): Observable<ContribListResponse> {
+    return this.http
+      .get(this.urlEndPoint)
+      .pipe(map((response: any) => {
+          return response as ContribListResponse;
+        }),
+        catchError(this.fnProcesaError)
+      );
+  }
+
+  save(form: any): Observable<DefaultRestResponse> {
+    const endpoint = this.buildUrlEndPoint('/' + form.cnt_id);
+    return this.http.post(endpoint,
+      form).pipe(map((response: any) => {
+        console.log('response in service:');
+        console.log(response);
+        return response as DefaultRestResponse;
+      }),
+      catchError(this.fnProcesaError)
+    );
   }
 
 }

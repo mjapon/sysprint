@@ -1,7 +1,28 @@
-export interface ContribsResp {
+export interface ContribListResponse {
   estado: number;
   items: Array<any>;
   cols: Array<any>;
+}
+
+/*export interface FindByRucResponse {
+  estado: number;
+  contrib: any;
+}*/
+
+export interface TipoContrib {
+  cls_id: number;
+  cls_nombre: string;
+}
+
+export interface ContribFormResponse {
+  estado: number;
+  form: any;
+  tiposcontrib: Array<TipoContrib>;
+}
+
+export interface DefaultRestResponse {
+  estado: number;
+  msg: string;
 }
 
 export interface NewContribForm {

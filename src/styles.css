@@ -2,3 +2,7 @@
 .ui-table table {
   table-layout:auto !important;
 }
+
+.required{
+  color: #f21d00;
+}

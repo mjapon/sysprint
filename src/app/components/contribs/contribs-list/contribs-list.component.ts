@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ContribuyenteService} from '../../../services/contribuyente.service';
-import {ContribsResp} from '../../../model/contribs';
+import {ContribListResponse} from '../../../model/contribs';
 import {MenuItem} from 'primeng/api';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-contribs-list',
@@ -15,7 +16,8 @@ export class ContribsListComponent implements OnInit {
   pSelectableRow: any;
   menu: MenuItem[];
 
-  constructor(private contribServ: ContribuyenteService) {
+  constructor(private contribServ: ContribuyenteService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -36,12 +38,16 @@ export class ContribsListComponent implements OnInit {
   }
 
   listar() {
-    this.contribServ.listar().subscribe((response: ContribsResp) => {
+    this.contribServ.listar().subscribe((response: ContribListResponse) => {
       console.log('respuesta al ejecutar listar por agencia');
       console.log(response);
       this.items = response.items;
       this.cols = response.cols;
     });
+  }
+
+  goToNew() {
+    this.router.navigate(['/contribs', '5']);
   }
 
 }
