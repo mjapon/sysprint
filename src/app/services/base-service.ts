@@ -3,7 +3,7 @@ import swal from 'sweetalert2';
 
 export class BaseService {
 
-  private baseUrlEndPoint = 'http://localhost:6543/rest';
+  private baseUrlEndPoint = 'http://localhost:6543/api';
   protected urlEndPoint: string;
 
   constructor(urlPath: string) {

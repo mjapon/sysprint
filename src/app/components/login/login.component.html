@@ -1,16 +1,28 @@
-<form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+
+<div class="row">
+  <!--
+  <p-toast position="top-right"></p-toast>
+  -->
+  <div class="container">
+    <form [formGroup]="angForm" (ngSubmit)="onclickSubmit()">
+      <div class="form-group">
+        <label for="empresaInput">Empresa</label>
+        <input type="text" class="form-control" id="empresaInput" aria-describedby="emailHelp"
+               placeholder="Ingrese el codigo de la empresa" name="empresa" formControlName="empresa" [ngClass]="{'is-invalid':submited && f.empresa.errors}">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Usuario</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+               placeholder="Ingrese el  nombre de usuario" name="usuario" formControlName="usuario" [ngClass]="{'is-invalid':submited && f.empresa.errors}">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Clave</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" name="clave" placeholder="Ingrese la clave" formControlName="clave" [ngClass]="{'is-invalid':submited && f.empresa.errors}">
+      </div>
+
+      <button type="submit" value="Ingresar" class="btn btn-primary">Ingresar</button>
+    </form>
+
   </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>
+

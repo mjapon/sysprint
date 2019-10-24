@@ -9,24 +9,24 @@ export class SwalService {
   constructor() {
   }
 
-  showMsg(msg: string, type: any) {
-    swal.fire('Mensaje', msg, type);
+  showMsg(msg: string, type: any, title: string = 'Mensaje') {
+    swal.fire(title, msg, type);
   }
 
-  fireInfo(msg) {
-    this.showMsg(msg, 'info');
+  fireInfo(msg, title: string = 'Mensaje') {
+    this.showMsg(msg, 'info', title);
   }
 
-  fireSuccess(msg) {
-    this.showMsg(msg, 'success');
+  fireSuccess(msg, title: string = 'Mensaje') {
+    this.showMsg(msg, 'success', title);
   }
 
-  fireWarning(msg) {
-    this.showMsg(msg, 'warning');
+  fireWarning(msg, title: string = 'Mensaje') {
+    this.showMsg(msg, 'warning', title);
   }
 
-  fireError(msg) {
-    this.showMsg(msg, 'error');
+  fireError(msg, title: string = 'Mensaje') {
+    this.showMsg(msg, 'error', title);
   }
 
 }

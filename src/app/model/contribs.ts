@@ -20,6 +20,7 @@ export interface ContribFormResponse {
   tiposcontrib: Array<TipoContrib>;
 }
 
+
 export interface DefaultRestResponse {
   estado: number;
   msg: string;
@@ -39,3 +40,11 @@ export interface NewContribForm {
   cnt_oblcontab: number;
   ocontab: string;
 }
+
+export interface UserDataSession {
+  token: string;
+  emp_codigo: number;
+  emp_esquema: string;
+  user_id: number;
+}
+

@@ -14,11 +14,14 @@ import { ContribsListComponent } from './components/contribs/contribs-list/contr
 import {HttpClientModule} from '@angular/common/http';
 import {TableModule} from 'primeng/table';
 import {MenubarModule} from 'primeng/menubar';
-import {CheckboxModule, InputMaskModule, MessageModule, SplitButtonModule, ToolbarModule} from 'primeng/primeng';
+import {CheckboxModule, InputMaskModule, MessageModule, MessageService, SplitButtonModule, ToolbarModule} from 'primeng/primeng';
 import { ContribsFormComponent } from './components/contribs/contribs-form/contribs-form.component';
 import { PageHeaderComponent } from './components/shared/page-header/page-header.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import {AuthService} from './services/auth.service';
+import { StartComponent } from './components/start/start.component';
+import {ToastModule} from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,8 @@ import { FormsModule } from '@angular/forms';
     MenuComponent,
     ContribsListComponent,
     ContribsFormComponent,
-    PageHeaderComponent
+    PageHeaderComponent,
+    StartComponent
   ],
   imports: [
     BrowserModule,
@@ -45,9 +49,10 @@ import { FormsModule } from '@angular/forms';
     SplitButtonModule,
     InputMaskModule,
     MessageModule,
-    CheckboxModule
+    CheckboxModule,
+    ToastModule
   ],
-  providers: [ContribuyenteService],
+  providers: [ContribuyenteService, AuthService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
